@@ -20,6 +20,16 @@ apiRouter.get('/houses', (req, res) => {
 });
 
 apiRouter.post('/houses', (req, res) => {
+    let { price } = req.body.house;
+    if (typeof price === 'undefined') {
+        res.status(400).end('Price field is required');
+        return;
+    }
+    price = parseInt(price, 10);
+    if (Number.isNaN(price) || price <= 0) {
+        res.status(400).end('Price should be a positive number');
+        return;
+    }
     const houses = JSON.parse(readFileSync('./fakeDb.json', 'utf-8'));
     const newHouse = req.body.house;
     const generatedId = generateId();
@@ -55,6 +65,9 @@ apiRouter.delete('/houses/:id', (req, res) => {
             `The house with the id: ${id} has been deleted from out database!`
         );
     }
+});
+apiRouter.use('*', (req, res) => {
+    res.status(404).end();
 });
 
 module.exports = apiRouter;
