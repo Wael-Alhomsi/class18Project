@@ -1,1 +1,4 @@
-[{"price":2000,"description":"some text","id":2},{"price":3000,"description":"some text","id":3}]
+[
+    { "price": 2000, "description": "some text", "id": 2 },
+    { "price": 3000, "description": "some text", "id": 3 }
+]
