@@ -35,7 +35,9 @@ export default class ListOfHouses extends Component {
         }
         return houses.map(house => (
             <div key={house.id}>
-                <Link to={this.props.match.url + '/' + house.id}>house.id</Link>
+                <Link to={this.props.match.url + '/' + house.id}>
+                    House ID: {house.id}
+                </Link>
             </div>
         ));
     }
