@@ -20,7 +20,9 @@ export default class ListOfHouses extends Component {
                     loading: null,
                 })
             )
-            .catch(() => this.setState({ error: 'Something went wrong!' }));
+            .catch(() =>
+                this.setState({ error: 'Something went wrong!', loading: null })
+            );
     }
     render() {
         const { houses, error, loading } = this.state;

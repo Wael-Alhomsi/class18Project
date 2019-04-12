@@ -27,7 +27,9 @@ export default class HouseDetails extends Component {
                     });
                 }
             })
-            .catch(() => this.setState({ error: 'Something went wrong!' }));
+            .catch(() =>
+                this.setState({ error: 'Something went wrong!', loading: null })
+            );
     }
 
     render() {
