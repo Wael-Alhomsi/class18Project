@@ -8,8 +8,8 @@ export default class ReportContribute extends Component {
                 Valid houses: {report.valid}
                 <br />
                 Invalid houses ({report.invalid.length}):
-                {report.invalid.map(data => (
-                    <div>
+                {report.invalid.map((data, i) => (
+                    <div key={i}>
                         Message:{' '}
                         <pre>{JSON.stringify(data.errors, null, 2)}</pre>
                         Raw: <pre>{JSON.stringify(data.raw, null, 2)}</pre>
