@@ -24,12 +24,6 @@ const validateHouse = houseObject => {
     if (typeof houseObject !== 'object') {
         valid = false;
         errors.push('a house should be an object');
-
-        return {
-            valid,
-            errors,
-            raw: houseObject,
-        };
     }
 
     requiredFields.forEach(field => {
@@ -38,6 +32,14 @@ const validateHouse = houseObject => {
             errors.push(`${field}: is required`);
         }
     });
+
+    if (valid === false) {
+        return {
+            valid,
+            errors,
+            raw: houseObject,
+        };
+    }
 
     if (!validator.isURL(houseObject.link)) {
         valid = false;
