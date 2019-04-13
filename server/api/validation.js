@@ -24,14 +24,21 @@ const validateHouse = houseObject => {
     if (typeof houseObject !== 'object') {
         valid = false;
         errors.push('a house should be an object');
-    } else {
-        requiredFields.forEach(field => {
-            if (typeof houseObject[field] === 'undefined') {
-                valid = false;
-                errors.push(`${field}: is required`);
-            }
-        });
+
+        return {
+            valid,
+            errors,
+            raw: houseObject,
+        };
     }
+
+    requiredFields.forEach(field => {
+        if (typeof houseObject[field] === 'undefined') {
+            valid = false;
+            errors.push(`${field}: is required`);
+        }
+    });
+
     if (!validator.isURL(houseObject.link)) {
         valid = false;
         errors.push('link must be a valid URL');
