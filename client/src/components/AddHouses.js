@@ -16,7 +16,7 @@ export default class AddHouses extends Component {
             .then(res => res.json())
             .then(data => {
                 if (data.error) {
-                    this.setState({ error: data.error });
+                    this.setState({ error: data.error, report: null });
                 } else {
                     this.setState({ error: null, report: data });
                 }

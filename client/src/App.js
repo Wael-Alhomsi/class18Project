@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
-import ListOfHouses from './components/ListOfHouses.js';
+import HousesList from './components/HousesList.js';
 import HouseDetails from './components/HouseDetails.js';
 import AddHouses from './components/AddHouses.js';
 
@@ -22,7 +22,7 @@ class App extends Component {
                 </ul>
                 <Switch>
                     <Route exact path="/api" render={() => <div>Home</div>} />
-                    <Route exact path="/api/houses" component={ListOfHouses} />
+                    <Route exact path="/api/houses" component={HousesList} />
                     <Route exact path="/contribute" component={AddHouses} />
                     <Route
                         exact

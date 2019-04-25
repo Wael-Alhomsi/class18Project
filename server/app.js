@@ -9,6 +9,7 @@ app.use(cors());
 
 app.get('*', function logGetRequests(req, res, next) {
     console.log('someone made a request with GET method');
+
     next();
 });
 
