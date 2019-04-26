@@ -30,7 +30,7 @@ class App extends Component {
                         component={HouseDetails}
                     />
 
-                    <Route render={() => <div>404</div>} />
+                    <Route render={() => <div>404 Page not found!</div>} />
                 </Switch>
             </div>
         );

@@ -80,8 +80,13 @@ export default class HousesList extends Component {
                 }
             })
 
-            .catch(() =>
-                this.setState({ error: 'Something went wrong!', loading: null })
+            .catch(err =>
+                this.setState({
+                    error: err.message,
+                    loading: null,
+                    houses: [],
+                    total: 0,
+                })
             );
     }
     handleInputChange = event => {

@@ -21,9 +21,9 @@ const requiredFields = [
 const validateHouse = houseObject => {
     let valid = true;
     const errors = [];
-    if (typeof houseObject !== 'object') {
+    if (typeof houseObject !== 'object' || Array.isArray(houseObject)) {
         valid = false;
-        errors.push('a house should be an object');
+        errors.push("a house should be an object 'not an array'");
     }
 
     requiredFields.forEach(field => {
