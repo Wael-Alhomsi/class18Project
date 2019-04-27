@@ -50,13 +50,13 @@ const validateHouse = houseObject => {
         errors.push('Date must be a valid ISO 8601 date');
     }
 
-    if (!validator.isFloat(`${houseObject.location_coordinates_lat}`)) {
+    const latLongStr = `${houseObject.location_coordinates_lat}, ${
+        houseObject.location_coordinates_lng
+    }`;
+
+    if (!validator.isLatLong(latLongStr)) {
         valid = false;
-        errors.push('location_coordinates_lat must be a floating-point number');
-    }
-    if (!validator.isFloat(`${houseObject.location_coordinates_lng}`)) {
-        valid = false;
-        errors.push('location_coordinates_lng must be a floating-point number');
+        errors.push('Location coordinates are not valid values');
     }
     if (!validator.isInt(`${houseObject.size_living_area}`, { gt: 0 })) {
         valid = false;
@@ -76,6 +76,14 @@ const validateHouse = houseObject => {
         valid = false;
         errors.push('price_value must be a positive number');
     }
+
+    houseObject.images.split(',').forEach((image, i) => {
+        if (!validator.isURL(image)) {
+            valid = false;
+            errors.push(`image number ${i + 1} must have valid URLs`);
+        }
+    });
+
     if (!validator.isBoolean(`${houseObject.sold}`)) {
         valid = false;
         errors.push('sold must be true or false');

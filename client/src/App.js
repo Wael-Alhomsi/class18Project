@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import HousesList from './components/HousesList.js';
-import HouseDetails from './components/HouseDetails.js';
+//import HouseDetails from './components/HouseDetails.js';
 import AddHouses from './components/AddHouses.js';
 
 class App extends Component {
