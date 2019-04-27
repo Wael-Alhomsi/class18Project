@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import ReportContribute from './ReportContribute';
 
 export default class AddHouses extends Component {
-    state = { error: null, report: null };
+    constructor(props) {
+        super(props);
+        this.state = { error: null, report: null };
+    }
+
     submit = e => {
         e.preventDefault();
 
@@ -39,7 +43,7 @@ export default class AddHouses extends Component {
 
                 <button>Submit</button>
                 <br />
-                {!!report && <ReportContribute report={report} />}
+                {report && <ReportContribute report={report} />}
             </form>
         );
     }

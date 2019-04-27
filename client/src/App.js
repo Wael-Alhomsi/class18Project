@@ -24,11 +24,11 @@ class App extends Component {
                     <Route exact path="/api" render={() => <div>Home</div>} />
                     <Route exact path="/api/houses" component={HousesList} />
                     <Route exact path="/contribute" component={AddHouses} />
-                    <Route
+                    {/* <Route
                         exact
                         path="/api/houses/:id"
                         component={HouseDetails}
-                    />
+                    /> */}
 
                     <Route render={() => <div>404 Page not found!</div>} />
                 </Switch>

@@ -27,7 +27,6 @@ export default class HousesList extends Component {
                 params[name] = val;
                 return params;
             }, {});
-
         this.setState(
             {
                 loading: true,
@@ -54,7 +53,7 @@ export default class HousesList extends Component {
             .join('&');
 
         if (updateUrl) {
-            this.props.history.push(
+            this.props.history.replace(
                 this.props.location.pathname + '?' + queryString
             );
         }
