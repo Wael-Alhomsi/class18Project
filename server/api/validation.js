@@ -45,19 +45,25 @@ const validateHouse = houseObject => {
         valid = false;
         errors.push('link must be a valid URL');
     }
+
     if (!validator.isISO8601(houseObject.market_date)) {
         valid = false;
         errors.push('Date must be a valid ISO 8601 date');
     }
-
-    const latLongStr = `${houseObject.location_coordinates_lat}, ${
+    if (
+        houseObject.location_coordinates_lat &&
         houseObject.location_coordinates_lng
-    }`;
+    ) {
+        const latLongStr = `${houseObject.location_coordinates_lat}, ${
+            houseObject.location_coordinates_lng
+        }`;
 
-    if (!validator.isLatLong(latLongStr)) {
-        valid = false;
-        errors.push('Location coordinates are not valid values');
+        if (!validator.isLatLong(latLongStr)) {
+            valid = false;
+            errors.push('Location coordinates are not valid values');
+        }
     }
+
     if (!validator.isInt(`${houseObject.size_living_area}`, { gt: 0 })) {
         valid = false;
         errors.push(
@@ -76,18 +82,21 @@ const validateHouse = houseObject => {
         valid = false;
         errors.push('price_value must be a positive number');
     }
-
-    houseObject.images.split(',').forEach((image, i) => {
-        if (!validator.isURL(image)) {
-            valid = false;
-            errors.push(`image number ${i + 1} must have valid URLs`);
-        }
-    });
-
-    if (!validator.isBoolean(`${houseObject.sold}`)) {
-        valid = false;
-        errors.push('sold must be true or false');
+    if (houseObject.images) {
+        houseObject.images.split(',').forEach((image, i) => {
+            if (!validator.isURL(image)) {
+                valid = false;
+                errors.push(`image number ${i + 1} must have valid URLs`);
+            }
+        });
     }
+    if (houseObject.sold) {
+        if (!validator.isBoolean(`${houseObject.sold}`)) {
+            valid = false;
+            errors.push('sold must be true or false');
+        }
+    }
+
     return {
         valid,
         errors,
