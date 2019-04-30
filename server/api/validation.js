@@ -83,10 +83,10 @@ const validateHouse = houseObject => {
         errors.push('price_value must be a positive number');
     }
     if (houseObject.images) {
-        houseObject.images.split(',').forEach((image, i) => {
+        houseObject.images.split(',').forEach(image => {
             if (!validator.isURL(image)) {
                 valid = false;
-                errors.push(`image number ${i + 1} must have valid URLs`);
+                errors.push(`"${image}" is not a valid image URL`);
             }
         });
     }

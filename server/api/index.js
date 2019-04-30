@@ -29,24 +29,26 @@ apiRouter.post('/houses', async (req, res) => {
     if (!Array.isArray(req.body)) {
         return res.status(400).json({ error: 'Data should be an array' });
     }
-    const processedData = req.body.map(validateHouse);
+    const processedHousesData = req.body.map(validateHouse);
 
-    const validData = [];
-    const invalidData = [];
-    processedData.forEach(elem => {
-        if (elem.valid) {
-            validData.push(elem);
+    const validHousesData = [];
+    const invalidHousesData = [];
+    processedHousesData.forEach(house => {
+        if (house.valid) {
+            validHousesData.push(house);
         } else {
-            invalidData.push(elem);
+            invalidHousesData.push(house);
         }
     });
     const report = {
-        valid: validData.length,
-        invalid: invalidData,
+        validHousesCount: validHousesData.length,
+        invalidHousesArray: invalidHousesData,
     };
-    if (validData.length) {
+    if (validHousesData.length) {
         try {
-            const housesData = validData.map(obj => houseForSqlQuery(obj.raw));
+            const housesData = validHousesData.map(obj =>
+                houseForSqlQuery(obj.raw)
+            );
             await db.queryPromise(addHousesSql, [housesData]);
             return res.json(report);
         } catch (err) {
