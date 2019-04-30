@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ReportContribute from './ReportContribute';
+import HouseContributionReport from './HouseContributionReport';
 
-export default class AddHouses extends Component {
+export default class AddingHouses extends Component {
     constructor(props) {
         super(props);
         this.state = { error: null, report: null };
@@ -31,19 +31,16 @@ export default class AddHouses extends Component {
         const { error, report } = this.state;
         return (
             <form onSubmit={this.submit}>
-                <textarea
-                    ref={input => (this.dataInput = input)}
-                    style={{
-                        width: '90%',
-                        height: '200px',
-                        display: 'block',
-                    }}
-                />
+                <textarea ref={input => (this.dataInput = input)} />
+
                 {error && <div>{error}</div>}
 
                 <button>Submit</button>
+
                 <br />
-                {report && <ReportContribute report={report} />}
+                <br />
+
+                {report && <HouseContributionReport report={report} />}
             </form>
         );
     }

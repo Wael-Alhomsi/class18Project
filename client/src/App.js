@@ -3,12 +3,12 @@ import './App.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import HousesList from './components/HousesList.js';
 //import HouseDetails from './components/HouseDetails.js';
-import AddHouses from './components/AddHouses.js';
+import AddingHouses from './components/AddingHouses.js';
 
 class App extends Component {
     render() {
         return (
-            <div className="App" style={{ padding: '20px' }}>
+            <div className="App">
                 <ul>
                     <li>
                         <Link to="/api">Home</Link>
@@ -23,7 +23,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/api" render={() => <div>Home</div>} />
                     <Route exact path="/api/houses" component={HousesList} />
-                    <Route exact path="/contribute" component={AddHouses} />
+                    <Route exact path="/contribute" component={AddingHouses} />
                     {/* <Route
                         exact
                         path="/api/houses/:id"
