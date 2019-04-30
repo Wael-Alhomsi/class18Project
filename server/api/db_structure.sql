@@ -2,7 +2,7 @@ drop table if exists houses;
 
 CREATE TABLE houses(
 id INT AUTO_INCREMENT key,
-link varchar(255) NOT NULL UNIQUE,
+link varchar(255) UNIQUE,
 market_date date NOT NULL,
 location_country varchar(50) NOT NULL,
 location_city varchar(50) NOT NULL,

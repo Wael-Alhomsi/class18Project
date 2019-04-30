@@ -41,11 +41,12 @@ const validateHouse = houseObject => {
         };
     }
 
-    if (!validator.isURL(houseObject.link)) {
-        valid = false;
-        errors.push('link must be a valid URL');
+    if (houseObject.link) {
+        if (!validator.isURL(houseObject.link)) {
+            valid = false;
+            errors.push('link must be a valid URL');
+        }
     }
-
     if (!validator.isISO8601(houseObject.market_date)) {
         valid = false;
         errors.push('Date must be a valid ISO 8601 date');
