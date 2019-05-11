@@ -20,8 +20,6 @@ $color-background: #e7f1f6;
 
 .App {
     font-family: Charter;
-    // max-width: 1350px;
-    // min-width: 1200px;
     width: 1200px;
     height: 755px;
     margin: 0 auto;
@@ -29,7 +27,72 @@ $color-background: #e7f1f6;
         url('./assets/multiple-houses.jpeg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 1350px 755px;
+    //background-size: 1200px 755px;
+    background-color: $color-dark;
+
+    #houses-list {
+        height: auto;
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.5)
+            ),
+            url('./assets/multiple-houses.jpeg');
+        background-position: center;
+        background-repeat: repeat;
+        padding: 0px 30px 60px 30px;
+    }
+
+    #adding-form {
+        height: auto;
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.5)
+            ),
+            url('./assets/multiple-houses.jpeg');
+        background-position: center;
+        background-repeat: repeat;
+        padding: 0px 30px 60px 30px;
+        form {
+            opacity: 0.8;
+            .error {
+                color: red;
+                width: 80%;
+                background-color: $color-background;
+                border-radius: 10px;
+                opacity: 0.8;
+                padding: 5px 10px;
+                margin-top: 10px;
+            }
+
+            textarea {
+                margin-top: 150px;
+                width: 80%;
+                height: 350px;
+                display: block;
+                padding: 10px;
+                border-radius: 10px;
+            }
+            button {
+                padding: 5px;
+                width: 100px;
+                text-align: center;
+                position: relative;
+                left: 812px;
+                margin: 0 auto;
+                border-radius: 10px;
+                margin: 10px 0px;
+            }
+            .contribution-report {
+                color: whit;
+                background-color: $color-background;
+                padding: 10px;
+                border-radius: 10px;
+            }
+        }
+    }
+    //
+    //
+    //
 
     h1 {
         font-size: 85px;
@@ -175,11 +238,6 @@ $color-background: #e7f1f6;
             padding-top: 50px;
         }
     }
-    textarea {
-        width: 90%;
-        height: 300px;
-        display: block;
-    }
 
     .desktop-menu {
         display: flex;
@@ -260,8 +318,6 @@ $color-background: #e7f1f6;
 
 @media screen and (max-width: 500px) {
     .App {
-        // max-width: 500;
-        // min-width: 200;
         width: auto;
         height: 685px;
         h1 {
@@ -361,8 +417,6 @@ $color-background: #e7f1f6;
                 font-size: 20px;
             }
         }
-        //
-        //
         .desktop-menu {
             display: none;
         }

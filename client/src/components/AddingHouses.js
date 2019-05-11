@@ -30,18 +30,20 @@ export default class AddingHouses extends Component {
     render() {
         const { error, report } = this.state;
         return (
-            <form onSubmit={this.submit}>
-                <textarea ref={input => (this.dataInput = input)} />
+            <div id="adding-form">
+                {' '}
+                <form onSubmit={this.submit}>
+                    <div className="contribution-entry">
+                        <textarea ref={input => (this.dataInput = input)} />
 
-                {error && <div>{error}</div>}
+                        {error && <div className="error">{error}</div>}
 
-                <button>Submit</button>
+                        <button>Submit</button>
+                    </div>
 
-                <br />
-                <br />
-
-                {report && <HouseContributionReport report={report} />}
-            </form>
+                    {report && <HouseContributionReport report={report} />}
+                </form>
+            </div>
         );
     }
 }

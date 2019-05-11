@@ -123,7 +123,7 @@ export default class HousesList extends Component {
         page = parseInt(page, 10);
         const pages = Math.ceil(total / pageSize);
         return (
-            <form>
+            <form id="houses-list">
                 <div>
                     <label>Total number of rooms</label>
                     <br />

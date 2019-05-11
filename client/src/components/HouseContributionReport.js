@@ -4,14 +4,19 @@ export default class HouseContributionReport extends Component {
     render() {
         const { report } = this.props;
         return (
-            <div>
-                {`${
-                    report.validHousesCount
-                } houses are added successfuly to the database.`}
+            <div className="contribution-report">
+                <h3>
+                    {' '}
+                    {`${
+                        report.validHousesCount
+                    } houses are added successfuly to the database.`}
+                    <br />
+                    {`${
+                        report.invalidHousesArray.length
+                    } objects are invalid house objects.`}
+                </h3>
                 <br />
-                {`${
-                    report.invalidHousesArray.length
-                } objects are invalid house objects.`}
+                <br />
                 {report.invalidHousesArray.map((data, i) => (
                     <div key={i}>
                         <h4>{`Invalid house object number ${i + 1}`}</h4>
